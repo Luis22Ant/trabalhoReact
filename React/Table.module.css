@@ -1,14 +1,12 @@
-/* Table.module.css */
+
 .container {
 
   flex-direction: row;
 
-  /* Cor de fundo cinza */
 }
 
 .menu {
   background-color: lightgray;
-  /* Cor de fundo do menu */
   border: 1px solid black;
   display: flex;
   justify-content: center;
