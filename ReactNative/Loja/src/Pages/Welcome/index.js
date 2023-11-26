@@ -2,31 +2,40 @@ import React from "react";
 import { TouchableOpacity } from "react-native";
 import { View, StyleSheet, Image, Text } from "react-native";
 import * as Animatable from 'react-native-animatable';
-import {useNavigation} from '@react-navigation/native'
-
+import { useNavigation } from '@react-navigation/native'
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 export default function Welcome() {
     const navigation = useNavigation();
     return (
         <View style={styles.container}>
-            <View style={styles.containerLogo}>
+            <LinearGradient
+                colors={['#A62A5C', '#6A2597']}
+                style={styles.linearGradient}>
                 <Animatable.Image
-                animation={"flipInY"}
+                    animation={"flipInY"}
                     source={require("../../assets/loja.png")}
                     style={{ width: "100%" }}
                     resizeMode="contain"
                 />
-            </View>
+            </LinearGradient>
+
+
 
             <Animatable.View delay={600} animation={"fadeInUp"} style={styles.containerForm}>
                 <Text style={styles.title}>Economize, venha comprar com a gente!</Text>
                 <Text style={styles.text}>Faça login para começar!</Text>
-                <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('Sign')}>
-                    <Text style={styles.buttonText}>Acessar</Text>
-                </TouchableOpacity>
+                <LinearGradient
+                    colors={['#A62A5C', '#6A2597']}
+                    style={styles.buttonGradient}
+                >
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Sign')}>
+                        <Text style={styles.buttonText}>Acessar</Text>
+                    </TouchableOpacity>
+                </LinearGradient>
             </Animatable.View>
-        </View>
+        </View >
     );
 }
 
@@ -38,14 +47,14 @@ const styles = StyleSheet.create({
         flex: 2,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:'gray'
+        backgroundColor: 'gray'
     },
     containerForm: {
         flex: 1,
         paddingStart: '5%',
         paddingEnd: '5%',
         borderTopLeftRadius: 25,
-        borderTopRightRadius: 25, 
+        borderTopRightRadius: 25,
     },
     title: {
         fontSize: 24,
@@ -56,25 +65,24 @@ const styles = StyleSheet.create({
     text: {
         color: 'gray',
     },
+    buttonGradient: {
+        borderRadius: 18,
+        marginTop: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     button: {
-        backgroundColor: 'gray',
-        padding: 10,
-        borderRadius: 5,
-        marginTop: 10,
-        position:'absolute',
-        borderRadius:50,
-        paddingVertical:10,
-        width:'60%',
-        alignSelf:'center',
-        bottom:'15%',
-        alignItems:'center',
-        justifyContent:'center'
+        width: '100%',
+        borderRadius: 4,
+        paddingVertical: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
 
     },
     buttonText: {
         color: 'white',
         textAlign: 'center',
-        fontSize:18,
-        fontWeight:'bold'
+        fontSize: 18,
+        fontWeight: 'bold'
     },
 });

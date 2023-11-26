@@ -48,7 +48,7 @@ const TableUsuarioUsuario = () => {
     border: '1px solid black',
     backgroundColor: 'lightGray',
     padding: '8px',
-    textAlign: 'left',
+    textAlign: 'left'
   };
 
   const containerEstilo = {
