@@ -3,22 +3,15 @@ import React from 'react';
 
 export default function Products(props) {
 
-    function filterdesc(desc) {
-        if (desc.length < 20) {
-            return desc;
-        }
-
-        return `${desc.substring(0, 20)}...`;
-    }
 
     return (
 
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={props.onClick}>
             <Image
                 source={props.img}
                 style={styles.produtosIMG}
             />
-            <Text style={styles.produtoText} >{filterdesc(props.children)}</Text>
+            <Text style={styles.produtoText} >props.children</Text>
             <View opacity={0.4}>
                 <Text style={styles.produtoText}>{props.cost}</Text>
             </View>

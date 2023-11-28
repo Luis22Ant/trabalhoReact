@@ -4,6 +4,7 @@ import * as Animatable from 'react-native-animatable';
 import AuthService from '../../Services/AuthService';
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
+import { Alert } from 'react-native';
 
 
 
@@ -15,7 +16,7 @@ export default function Sign() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const URL = 'https://457c-186-235-109-67.ngrok-free.app/api/Login/login';
+    const URL = 'https://4195-186-235-106-92.ngrok-free.app/api/Login/login';
 
 
     const handleRegister = () => {
@@ -35,10 +36,18 @@ export default function Sign() {
             });
 
             if (!response.ok) {
-                throw new Error('Login failed');
+                Alert.alert(
+                    'Usuário ou senha incorretos',
+                    'Tente novamente!',
+                    [
+                        { text: 'OK', onPress: () => navigation.navigate('Sign') },
+                    ],
+                    { cancelable: false }
+                );
+                // throw new Error('Login failed');
             } else {
                 const data = await response.json();
-                navigation.navigate('Home')
+                navigation.navigate('Home', { username })
                 return data;
             }
 
@@ -119,7 +128,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth:1
+        borderWidth: 1
     },
     button: {
         width: '100%',

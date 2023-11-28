@@ -33,7 +33,7 @@ class AuthService {
 
 
     static async RegistrarUsuario(usuario, senha, cpf, dataNascimento) {
-        const apiUrl = `https://457c-186-235-109-67.ngrok-free.app/api/Login/cadastro`;
+        const apiUrl = `https://4195-186-235-106-92.ngrok-free.app/api/Login/cadastro`;
 
         try {
             const response = await fetch(apiUrl, {
